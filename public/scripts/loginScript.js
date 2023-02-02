@@ -28,7 +28,7 @@ $(document).ready(function () {
                 if (data.success) {
                     window.location = data.redirect
                 } else {
-                    $("#warning").html("Incorrect username or password")
+                    $("#warning").html("Invalid username or password")
                 }
             })
         }
