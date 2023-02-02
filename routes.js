@@ -1,7 +1,7 @@
 const routes = {
     login: (req, res) => {
         res.render("login", {
-            title: "test"
+            title: "Login Page"
         })
     }
 }
