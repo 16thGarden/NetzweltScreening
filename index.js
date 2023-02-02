@@ -56,3 +56,12 @@ app.post("/account/logout", postrequests.logout)
 /* -------------------------------------- GET REQUESTS ------------------------------------ */
 const getrequests = require("./getrequests.js")
 app.get("/test", getrequests.test)
+
+/* --------------------------------- REDIRECT OTHER PAGES --------------------------------- */
+app.use((req, res, next) => {
+    if (req.session.name) {
+        res.redirect("/home/index");
+    } else {
+        res.redirect("/account/login");
+    }
+});
