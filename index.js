@@ -42,12 +42,16 @@ const server = app.listen(port, function() {
 
 /* ---------------------------------------- ROUTES ---------------------------------------- */
 const routes = require("./routes.js")
-app.get("/", routes.login)
+app.get("/", (req, res) => {
+    res.redirect("/home/index")
+})
+app.get("/account/login", routes.login)
+app.get("/home/index", routes.home)
 
 /* ------------------------------------- POST REQUESTS ------------------------------------ */
 const postrequests = require("./postrequests.js")
-app.post("/login", postrequests.login)
-app.post("/logout", postrequests.logout)
+app.post("/account/login", postrequests.login)
+app.post("/account/logout", postrequests.logout)
 
 /* -------------------------------------- GET REQUESTS ------------------------------------ */
 const getrequests = require("./getrequests.js")

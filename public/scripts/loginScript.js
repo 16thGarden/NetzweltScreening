@@ -21,12 +21,12 @@ $(document).ready(function () {
         }
 
         if (valid) {
-            $.post("/login", {
+            $.post("/account/login", {
                 username: username,
                 password: password
             }, function(data, status) {
                 if (data.success) {
-                    window.location = "/home"
+                    window.location = data.redirect
                 } else {
                     $("#warning").html("Incorrect username or password")
                 }
