@@ -3,13 +3,18 @@ const postrequests = {
         const username = req.body.username
         const password = req.body.password
         
+        var valid = false
+        if (username == "foo" && password == "bar") {
+            valid = true
+        }
+
         res.status(200).send({
-            test: "this is a test"
+            success: valid
         })
     },
 
     logout: (req, res) => {
-        
+
     }
 }
 
