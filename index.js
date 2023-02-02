@@ -36,7 +36,7 @@ app.use(session({
 }));
 
 const server = app.listen(port, function() {
-    console.log("App listening at port "  + port + " with secret key " + envSessionKey);
+    console.log("App listening at port "  + port);
     //database.connect();
 });
 

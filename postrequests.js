@@ -1,30 +1,27 @@
+const axios = require('axios')
+
 const postrequests = {
     login: (req, res) => {
         const username = req.body.username
         const password = req.body.password
-        
-        var valid = false
-        var response
-        if (username == "foo" && password == "bar") {
-            valid = true
-            response = {
-                username: "foo",
-                displayName: "Foo Bar Foo",
-                roles: [
-                    "basic-user"
-                ]
-            }
-        }
 
-        if (valid) {
-            req.session.username = response.username
-            req.session.displayName = response.displayName
-            req.session.roles = response.roles
-        }
-             
-        res.status(200).send({
-            success: valid,
-            redirect: "/home/index"
+        axios.post('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
+            username: username,
+            password: password
+        }).then((response) => {
+            const data = response.data
+            req.session.username = data.username
+            req.session.displayName = data.displayName
+            req.session.roles = data.roles
+
+            res.status(200).send({
+                success: true,
+                redirect: "/home/index"
+            })
+        }).catch((error) => {
+            res.send({
+                success: false,
+            })
         })
     },
 

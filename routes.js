@@ -34,7 +34,7 @@ const buildHTML = (data, index) => {
             //console.log("child of " + data[index].id, data[index].name, data[index].parent + " found: " + data[i].id, data[i].name, data[i].parent)
         }
     }
-    console.log("children found: " + children)
+    //console.log("children found: " + children)
 
     if (children.length == 0) {
         //console.log("no children for " + data[index].id, data[index].name, data[index].parent)
@@ -59,11 +59,11 @@ const routes = {
                 var territoriesHTML = ""
                 for (var i = 0; i < data.length; i++) {
                     if (data[i].parent == null) {
-                        console.log(data[i].name, data[i].parent)
+                        //console.log(data[i].name, data[i].parent)
                         territoriesHTML += buildHTML(data, i)
                     }
                 }
-                console.log(territoriesHTML)
+                
                 res.render("home", {
                     title: "Home Page",
                     displayName: req.session.displayName,

@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $("#submit").click(function() {
         $("#warning").html("")
+        $("#validating").html("")
         $("#username").css("border", "")
         $("#password").css("border", "")
         
@@ -21,6 +22,7 @@ $(document).ready(function () {
         }
 
         if (valid) {
+            $("#validating").html("validating...")
             $.post("/account/login", {
                 username: username,
                 password: password
@@ -28,6 +30,7 @@ $(document).ready(function () {
                 if (data.success) {
                     window.location = data.redirect
                 } else {
+                    $("#validating").html("")
                     $("#warning").html("Invalid username or password")
                 }
             })
